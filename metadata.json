@@ -1,0 +1,8 @@
+{
+  "name": "Rebecca - Portfolio & Cloud IT Profile",
+  "description": "Professional portfolio for Rebecca, IT professional & web developer specializing in cloud security, digital experiences, and coursework showcase.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
