@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Shield, Terminal, Building2 } from 'lucide-react';
+import { Menu, X, Shield, Terminal, Briefcase } from 'lucide-react';
 
 interface NavbarProps {
   activeSection: string;
@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     { label: 'Education', href: '#education' },
     { label: 'Work', href: '#projects' },
     { label: 'Documents', href: '#documents' },
-    { label: 'KCA Attachment', href: '#kca-application', highlight: true },
+    { label: 'Career Suite', href: '#career-suite', highlight: true },
     { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' },
   ];
@@ -57,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
                       background: 'rgba(59, 130, 246, 0.12)'
                     } : {}}
                   >
-                    {link.highlight && <Building2 size={13} style={{ display: 'inline', marginRight: '5px', verticalAlign: '-1px' }} />}
+                    {link.highlight && <Briefcase size={13} style={{ display: 'inline', marginRight: '5px', verticalAlign: '-1px' }} />}
                     {link.label}
                   </a>
                 </li>

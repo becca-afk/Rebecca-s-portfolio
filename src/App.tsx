@@ -5,7 +5,7 @@ import { About } from './components/About';
 import { Education } from './components/Education';
 import { Projects } from './components/Projects';
 import { Documents } from './components/Documents';
-import { KcaAttachmentSuite } from './components/KcaAttachmentSuite';
+import { CareerSuite } from './components/CareerSuite';
 import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -15,7 +15,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sectionIds = ['hero', 'profile', 'education', 'projects', 'documents', 'kca-application', 'skills', 'contact'];
+      const sectionIds = ['hero', 'profile', 'education', 'projects', 'documents', 'career-suite', 'skills', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
@@ -43,7 +43,7 @@ export const App: React.FC = () => {
         <Education />
         <Projects />
         <Documents />
-        <KcaAttachmentSuite />
+        <CareerSuite />
         <Skills />
         <Contact />
       </main>

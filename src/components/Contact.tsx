@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Copy, Check, Globe, Building2, Printer, MapPin } from 'lucide-react';
+import { Mail, Copy, Check, Printer, MapPin, Briefcase } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 // Clean SVG icons for GitHub & LinkedIn
@@ -28,28 +28,44 @@ export const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="section">
-      <h2>Get In Touch for Attachment</h2>
+      <h2>Get In Touch for Opportunities</h2>
       <div className="glass-card" style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto' }}>
+        <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          background: 'rgba(59, 130, 246, 0.12)',
+          border: '1px solid rgba(59, 130, 246, 0.3)',
+          padding: '4px 14px',
+          borderRadius: '9999px',
+          fontSize: '0.85rem',
+          color: '#93c5fd',
+          marginBottom: '1rem'
+        }}>
+          <Briefcase size={15} />
+          <span>{personalInfo.availability}</span>
+        </div>
+
         <p style={{ marginBottom: '1.75rem', fontSize: '1.08rem', color: '#e2e8f0', lineHeight: '1.7' }}>
-          Currently seeking an industrial attachment placement for <strong>{personalInfo.attachmentPeriod}</strong> (Reg No: <strong>{personalInfo.studentId}</strong>). Open to KCA University ICT Services and reputable technology teams across Nairobi and Kenya.
+          Open to full-time and flexible opportunities in <strong>IT Support</strong>, <strong>Software Development (Java, Web, SQL)</strong>, and <strong>Network Operations</strong>. Ready to add immediate value to tech teams and corporate departments across Nairobi and remote setups.
         </p>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '0.9rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
           <a
-            href={`mailto:${personalInfo.email}?subject=KCA%20Attachment%20Application%20-%20Rebecca%20Nabusambya`}
+            href={`mailto:${personalInfo.personalEmail}?subject=Job%20Opportunity%20-%20Rebecca%20Nabusambya`}
             className="btn btn-primary"
             style={{ padding: '0.75rem 1.75rem' }}
           >
             <Mail size={18} />
-            Email Application
+            Email Job Opportunity
           </a>
           <a
-            href="#kca-application"
+            href="#career-suite"
             className="btn btn-outline"
             style={{ padding: '0.75rem 1.75rem' }}
           >
             <Printer size={18} />
-            Print Attachment CV
+            Print Professional CV
           </a>
           <a
             href={personalInfo.linkedin}
@@ -116,41 +132,6 @@ export const Contact: React.FC = () => {
             </button>
           </div>
 
-          {/* Student Email */}
-          <div style={{
-            background: 'rgba(255, 255, 255, 0.02)',
-            padding: '12px 16px',
-            borderRadius: '10px',
-            border: '1px solid var(--glass-border)',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center'
-          }}>
-            <div>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'block' }}>KCA Student Email</span>
-              <strong style={{ color: '#fff', fontSize: '0.92rem' }}>{personalInfo.email}</strong>
-            </div>
-            <button
-              onClick={() => handleCopy(personalInfo.email, 'studentEmail')}
-              style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid var(--glass-border)',
-                color: 'var(--text-secondary)',
-                borderRadius: '6px',
-                padding: '5px 8px',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '4px',
-                fontSize: '0.75rem'
-              }}
-              title="Copy student email"
-            >
-              {copiedType === 'studentEmail' ? <Check size={12} color="#4ade80" /> : <Copy size={12} />}
-              {copiedType === 'studentEmail' ? 'Copied' : 'Copy'}
-            </button>
-          </div>
-
           {/* Personal Email */}
           <div style={{
             background: 'rgba(255, 255, 255, 0.02)',
@@ -162,7 +143,7 @@ export const Contact: React.FC = () => {
             alignItems: 'center'
           }}>
             <div>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'block' }}>Personal Email</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'block' }}>Direct / Hiring Email</span>
               <strong style={{ color: '#fff', fontSize: '0.92rem' }}>{personalInfo.personalEmail}</strong>
             </div>
             <button
@@ -186,6 +167,41 @@ export const Contact: React.FC = () => {
             </button>
           </div>
 
+          {/* Student Email */}
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.02)',
+            padding: '12px 16px',
+            borderRadius: '10px',
+            border: '1px solid var(--glass-border)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}>
+            <div>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'block' }}>KCA Academic Email</span>
+              <strong style={{ color: '#fff', fontSize: '0.92rem' }}>{personalInfo.email}</strong>
+            </div>
+            <button
+              onClick={() => handleCopy(personalInfo.email, 'studentEmail')}
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                border: '1px solid var(--glass-border)',
+                color: 'var(--text-secondary)',
+                borderRadius: '6px',
+                padding: '5px 8px',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px',
+                fontSize: '0.75rem'
+              }}
+              title="Copy student email"
+            >
+              {copiedType === 'studentEmail' ? <Check size={12} color="#4ade80" /> : <Copy size={12} />}
+              {copiedType === 'studentEmail' ? 'Copied' : 'Copy'}
+            </button>
+          </div>
+
           {/* Location & Institution */}
           <div style={{
             background: 'rgba(255, 255, 255, 0.02)',
@@ -198,7 +214,7 @@ export const Contact: React.FC = () => {
           }}>
             <MapPin size={20} color="var(--accent-blue)" style={{ flexShrink: 0 }} />
             <div>
-              <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'block' }}>Location & Institution</span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'block' }}>Location & Base</span>
               <span style={{ color: '#fff', fontSize: '0.88rem', fontWeight: 600 }}>
                 {personalInfo.location} • KCA University
               </span>

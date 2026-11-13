@@ -24,5 +24,21 @@ export interface DocumentItem {
   title: string;
   description: string;
   fileUrl: string;
+  downloadName?: string;
   iconType: 'cv' | 'resume' | 'letter';
+}
+
+export interface SkillItem {
+  name: string;
+  detail?: string;
+  grade?: string;
+  tag?: string;
+}
+
+export interface SkillCategory {
+  id: string;
+  title: string;
+  iconName: string;
+  description: string;
+  skills: SkillItem[];
 }
