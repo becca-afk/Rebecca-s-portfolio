@@ -26,14 +26,19 @@ export const personalInfo = {
 
 export const educationList: EducationItem[] = [
   {
-    qualification: "Diploma in Information Technology",
+    qualification: "Diploma in Information Technology (GPA: 3.42)",
     institution: "KCA University",
     period: "2025 - 2027 (Expected)",
   },
   {
-    qualification: "KCSE (Grade C)",
-    institution: "The Aga Khan High School, Nairobi",
-    period: "2020 - 2024",
+    qualification: "Kenya Certificate of Secondary Education (KCSE)",
+    institution: "Aga Khan High School",
+    period: "2023 - 2024",
+  },
+  {
+    qualification: "Secondary Education (KCSE Track)",
+    institution: "Riara High School",
+    period: "2019 - 2022",
   },
 ];
 
@@ -90,24 +95,24 @@ export const documentsList: DocumentItem[] = [
   {
     id: "resume",
     title: "Professional Resume",
-    description: "Up-to-date 2-page resume highlighting GPA 3.42, KCA grades, IT support, projects, and technical tools.",
-    fileUrl: "./assets/aistudio/REBECCA_NABUSAMBYA_MANYASI_6c673a02.pdf",
+    description: "Final updated CV/Resume featuring KCA University (GPA 3.42), Aga Khan & Riara High School, verified grades, skills, and live projects.",
+    fileUrl: "./Resume.pdf",
     downloadName: "Rebecca_Nabusambya_Manyasi_Resume.pdf",
     iconType: "resume",
   },
   {
     id: "cv",
     title: "Curriculum Vitae",
-    description: "Complete academic background, coursework grades, projects, and professional profile.",
-    fileUrl: "./assets/aistudio/REBECCA_NABUSAMBYA_MANYASI_6c673a02.pdf",
+    description: "Complete ATS-ready CV formatted with Professional Summary, Technical Skills, Projects, Education, and Achievements.",
+    fileUrl: "./CV.pdf",
     downloadName: "Rebecca_Nabusambya_Manyasi_CV.pdf",
     iconType: "cv",
   },
   {
     id: "cover-letter",
     title: "Cover Letter",
-    description: "Tailored application letter showcasing IT support, website maintenance, and digital media skills.",
-    fileUrl: "./assets/aistudio/cover_letter_21a661d7.pdf",
+    description: "Tailored IT Support & Software Development cover letter aligned with KCA training, live deployments, and digital media skills.",
+    fileUrl: "./Cover_Letter.pdf",
     downloadName: "Rebecca_Nabusambya_Manyasi_Cover_Letter.pdf",
     iconType: "letter",
   },

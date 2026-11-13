@@ -135,9 +135,9 @@ structured cabling (RJ45, T568A/B), and Linux administration to deliver reliable
     - Financial Management & Budgeting
     - Application Programming
 
-• 2020 – 2024: Kenya Certificate of Secondary Education (KCSE)
-  Institution: The Aga Khan High School, Nairobi
-  Attainment: KCSE Certificate (Mean Grade: C)
+• Kenya Certificate of Secondary Education (KCSE)
+  - Riara High School (2019 – 2022)
+  - Aga Khan High School (2023 – 2024)
 
 --------------------------------------------------------------------------------
 3. TECHNICAL PROFICIENCIES & PRACTICAL SKILLS
@@ -544,12 +544,14 @@ ${phone} | ${email}`;
                 </div>
 
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', fontWeight: 700, fontSize: '0.98rem' }}>
-                    <span style={{ color: '#0f172a' }}>Kenya Certificate of Secondary Education (KCSE)</span>
-                    <span style={{ color: '#475569' }}>2020 – 2024</span>
+                  <div style={{ fontWeight: 700, fontSize: '0.98rem', color: '#0f172a' }}>
+                    Kenya Certificate of Secondary Education (KCSE)
                   </div>
                   <div style={{ color: '#1e3a8a', fontWeight: 600, fontSize: '0.92rem' }}>
-                    The Aga Khan High School, Nairobi (Mean Grade: C)
+                    • Riara High School (2019 – 2022)
+                  </div>
+                  <div style={{ color: '#1e3a8a', fontWeight: 600, fontSize: '0.92rem' }}>
+                    • Aga Khan High School (2023 – 2024)
                   </div>
                 </div>
               </div>

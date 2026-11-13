@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { X, Download, Printer, Copy, Check, FileText, Briefcase } from 'lucide-react';
 import { DocumentItem } from '../types';
-import { personalInfo, defaultReferees } from '../data/portfolioData';
+import { personalInfo } from '../data/portfolioData';
 import { getDocumentDownloadFilename, normalizeRelativeAssetUrl } from '../utils/portfolioHelpers';
 
 interface DocumentModalProps {
@@ -33,88 +33,81 @@ export const DocumentModal: React.FC<DocumentModalProps> = ({ document, onClose 
 
   const getPlainTextContent = () => {
     if (document.id === 'cover-letter') {
-      return `${personalInfo.fullName.toUpperCase()}
-P.O. Box 56808-00200, Nairobi, Kenya
-Phone: ${personalInfo.formattedPhone} | Email: ${personalInfo.personalEmail}
-LinkedIn: ${personalInfo.linkedin} | Portfolio: ${personalInfo.portfolioUrl}
+      return `REBECCA NABUSAMBYA MANYASI
+Nairobi, Kenya | 0116968755 | rnabusambya@gmail.com
+GitHub: github.com/becca-afk | Portfolio: ${personalInfo.portfolioUrl}
 
 Date: ${new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
 
-To: The Hiring Team / Directorate of Technology,
+To: The Hiring Manager,
 Nairobi, Kenya.
 
-Dear Sir/Madam,
+Dear Hiring Manager,
 
 RE: APPLICATION FOR IT SUPPORT SPECIALIST / JUNIOR SOFTWARE DEVELOPER POSITION
 
-I am writing to formally submit my application for an IT Support Specialist or Junior Software Developer position within your esteemed organization. I am a dedicated, high-achieving Information Technology professional completing my Diploma at KCA University (Student Reg. No: ${personalInfo.studentId}), available for immediate full-time or flexible employment.
+I am writing to express my strong interest in an IT Support, Technical Operations, or Junior Software Development role within your organization. As an adaptable Information Technology student at KCA University (Cumulative GPA: 3.42, B+ Average) with hands-on training in hardware maintenance, network configuration, web development, and desktop publishing, I am prepared to contribute reliable value to your team.
 
-Throughout my academic coursework and practical laboratory sessions at KCA University, I have maintained exemplary performance in core computing disciplines, achieving:
-• Web Development (Grade A)
-• Human-Computer Interaction (Grade A)
-• Network Design & Setup (Grade A)
-• Computer Architecture & Hardware (Grade A)
-• Java Programming & OOP (Grade A-)
-• Relational Database Systems & SQL (Grade A-)
-• Systems Analysis & Design (Grade A-)
-• Structured Cabling & Infrastructure (Grade B+)
-• C Language & Low-Level Programming (Grade B+)
-• Operating Systems & Linux Foundations (Grade B)
+My academic coursework and practical training align directly with modern IT operational needs:
+• IT Support & Hardware Maintenance: Trained in PC assembly/disassembly, hardware diagnostics (RAM, SSD/HDD, PSU), clean OS installation/formatting (Windows & Ubuntu Linux), and remote technical support.
+• Networking & Infrastructure: Hands-on experience in Network Design and Setup (Grade A), Structured Cabling (Grade B+), and TCP/IP fundamentals.
+• Software, Web & Databases: Strong foundation in Java OOP (Grade A-), Database Systems & SQL (Grade A-), C Programming (Grade B+), HTML/CSS (Grade A), Git, GitHub, Vercel, and VirtualBox.
+• Design & Business Systems: Independently built and deployed a live e-commerce website (First Class Perfume) integrating a WhatsApp ordering system to solve payment bottlenecks, alongside coursework in Desktop Publishing (DTP), Electronic Business Systems, and Financial Management.
 
-In addition to strong academic foundations, I bring hands-on competencies in physical PC assembly & disassembly, hardware component troubleshooting (RAM, SSD/HDD, PSU), clean operating system formatting (Windows & Linux Ubuntu CLI), and RJ45 structured cabling (T568A/T568B). Furthermore, I have built and deployed live commercial systems, including an e-commerce platform with automated WhatsApp integration deployed on Vercel.
+Additionally, I am fluent in English and Swahili and placed 2nd Nationally at the Junior Achievers Kenya competition in Mombasa, demonstrating strong teamwork, business acumen, and communication under pressure.
 
-Recognized as a National Runner-Up (2nd Place in Kenya) in the Junior Achievers competition in Mombasa, I take pride in clear technical documentation, bilingual communication (Native Swahili, Fluent English), fast trainability, and a dedicated work ethic.
+I have attached my updated CV for your review and welcome the opportunity to discuss how my skills can support your team.
 
-Attached herewith are my Curriculum Vitae and certified academic course records. I would welcome the opportunity to discuss how my technical skills can support your organizational operations.
+Thank you for your time and consideration.
 
-Yours faithfully,
-${personalInfo.fullName}
-${personalInfo.formattedPhone} | ${personalInfo.personalEmail}`;
+Sincerely,
+Rebecca Nabusambya Manyasi
+0116968755 | rnabusambya@gmail.com`;
     }
 
-    return `CURRICULUM VITAE - ${personalInfo.fullName.toUpperCase()}
-Student Reg. No: ${personalInfo.studentId} | KCA University (School of Technology)
-Phone: ${personalInfo.formattedPhone} | Email: ${personalInfo.personalEmail} | Academic: ${personalInfo.email}
-Postal: ${personalInfo.postalAddress} | Location: ${personalInfo.location}
-Portfolio: ${personalInfo.portfolioUrl} | GitHub: ${personalInfo.github}
+    return `REBECCA NABUSAMBYA MANYASI
+Nairobi, Kenya | 0116968755 | rnabusambya@gmail.com
+GitHub: github.com/becca-afk
 
-1. CAREER OBJECTIVE
-A proactive, dedicated Information Technology professional completing a Diploma in IT at KCA University, seeking full-time or flexible tech employment in IT Support, Network Operations, or Software Development. Eager to apply strong theoretical foundations in Network Design (Grade A), Web Systems (Grade A), Java Programming (Grade A-), Database Systems (Grade A-), and Computer Architecture (Grade A), alongside hands-on PC assembly/disassembly, structured cabling, and remote IT troubleshooting skills to deliver dependable technical operations.
+PROFESSIONAL SUMMARY
+Highly adaptable IT student at KCA University (GPA: 3.42) with a strong foundation in hardware maintenance, network configuration, and software development. Trained to assemble/disassemble PCs, format operating systems (Windows/Linux), and troubleshoot technical issues. Proven ability to bridge technical and business environments, having independently built and deployed a live e-commerce website. Fluent in English and Swahili, with a proven track record of teamwork as a national competition runner-up.
 
-2. EDUCATION BACKGROUND
-• 2025 – 2027 (Expected): Diploma in Information Technology
-  KCA University, School of Technology, Nairobi, Kenya
-  Verified Coursework Grades:
-  - Web Development: Grade A
-  - Human-Computer Interaction: Grade A
-  - Network Design & Setup: Grade A
-  - Computer Architecture: Grade A
-  - Java Programming: Grade A-
-  - Database Systems (SQL): Grade A-
-  - Systems Analysis & Design: Grade A-
-  - Structured Cabling: Grade B+
-  - C Language & Systems: Grade B+
-  - Data Structures & Algorithms: Grade B
-  - Operating Systems: Grade B
-• 2020 – 2024: Kenya Certificate of Secondary Education (KCSE)
-  The Aga Khan High School, Nairobi (Mean Grade: C)
+TECHNICAL SKILLS
+• IT Support & Hardware: PC assembly/disassembly, hardware troubleshooting, OS installation/formatting (Windows, Ubuntu), remote support.
+• Programming Languages: Java (OOP), C (Pointers/Memory Management), HTML, CSS.
+• Operating Systems: Linux (Ubuntu Command Line), Windows Administration.
+• Networking: Network Design and Setup, Structured Cabling, TCP/IP basics.
+• Data & Databases: SQL, Relational Database Design, Data Entry.
+• Design & Business Tools: Desktop Publishing (DTP), Electronic Business Systems, Financial Management, MS Office, Google Workspace.
+• Other Tools: Git, GitHub, Vercel, VirtualBox.
 
-3. TECHNICAL PROFICIENCIES
-• Programming & Development: Java (OOP, Grade A-), C Language (Systems & Pointers, Grade B+), SQL (Relational, Grade A-), HTML5 & Responsive CSS (Grade A), Data Structures (Grade B).
-• IT Support & Hardware: PC assembly & disassembly, hardware component diagnostics (RAM, HDD/SSD, PSU), OS formatting & installation (Windows & Linux), remote technical support.
-• Networking & Infrastructure: Network design (Grade A), structured cabling & RJ45 crimping (T568A/B, Grade B+), TCP/IP & routing (Grade B), IPv4 addressing, LAN/WLAN troubleshooting.
-• Systems & Business: Systems analysis & design (SDLC, Grade A-), Human-Computer Interaction (HCI, Grade A), Electronic Business Systems (e-commerce & M-Pesa), Desktop Publishing (DTP), financial budgeting.
-• Systems Administration: Linux (Ubuntu CLI & shell), Windows 10/11 administration, user management.
+PROJECTS
+First Class Perfume (Live E-Commerce Website)
+• Consulted with a business owner to solve a payment bottleneck.
+• Built and deployed a responsive website using HTML, CSS, and Vercel.
+• Integrated a WhatsApp ordering system to facilitate direct customer chats and M-Pesa payments.
+• Live Link: first-class-perfume.vercel.app
 
-4. HONORS & LEADERSHIP
-• National Runner-Up (2nd Place in Kenya): Junior Achievers Kenya (Mombasa national competition)
-• Active Member, KCA University Technology & Computing Community
-• Self-driven live deployment of web applications (Vercel & GitHub Pages)
+Car Showcase Website
+• Designed and deployed responsive web layouts to practice front-end development.
+• Live Link: becca-afk.github.io/car-website
 
-5. REFEREES
-1. Dr. Simon M. Ndung'u, Dean, School of Technology, KCA University. Email: technology@kcau.ac.ke | Tel: +254 710 888 022
-2. Head of Computing & Informatics, Senior Lecturer, School of Technology, KCA University. Email: ictfaculty@kcau.ac.ke | Tel: +254 710 888 022
-3. Director of Career Development, Head of Corporate Partnerships, KCA University. Email: careers@kcau.ac.ke | Tel: +254 710 888 022`;
+EDUCATION
+Diploma in Information Technology | KCA University (Expected 2027)
+• Cumulative GPA: 3.42 (B+ Average)
+• Key Grades: Computer Organization (A), Network Design (A), Human-Computer Interaction (A), Web Design (A), Java Programming (A-), Database Systems (A-).
+• Relevant Coursework: Principles of Computer Support & Maintenance, Operating Systems, Systems Analysis & Design, Electronic Business Systems, Financial Management, Desktop Publishing (DTP).
+
+Kenya Certificate of Secondary Education (KCSE)
+• Riara High School (2019 – 2022)
+• Aga Khan High School (2023 – 2024)
+
+ACHIEVEMENTS
+• Junior Achievers Kenya: 2nd Place Nationally (Mombasa). Demonstrated teamwork, business acumen, and presentation skills under pressure.
+• Languages: Native Swahili, Fluent English.
+
+REFERENCES
+Available upon request.`;
   };
 
   return (
@@ -264,79 +257,93 @@ A proactive, dedicated Information Technology professional completing a Diploma 
                 <h1 style={{ fontSize: '1.7rem', color: '#0f172a', margin: 0, fontWeight: 800, textAlign: 'center', textTransform: 'uppercase' }}>
                   {personalInfo.fullName}
                 </h1>
-                <p style={{ textAlign: 'center', color: '#1e3a8a', fontWeight: 700, margin: '4px 0 0', fontSize: '0.98rem' }}>
-                  IT Support Specialist & Software Developer • Diploma in Information Technology
+                <p style={{ textAlign: 'center', color: '#1e3a8a', fontWeight: 700, margin: '4px 0 0', fontSize: '0.96rem' }}>
+                  Nairobi, Kenya | {personalInfo.phone} | {personalInfo.personalEmail}
                 </p>
-                <p style={{ textAlign: 'center', color: '#475569', fontSize: '0.88rem', margin: '2px 0 0' }}>
-                  Student Reg. No: <strong>{personalInfo.studentId}</strong> • KCA University (School of Technology)
-                </p>
-                <div style={{ textAlign: 'center', fontSize: '0.85rem', color: '#475569', marginTop: '6px' }}>
-                  Phone: {personalInfo.formattedPhone} | Email: {personalInfo.personalEmail} | Location: {personalInfo.location}
+                <div style={{ textAlign: 'center', fontSize: '0.85rem', color: '#475569', marginTop: '4px' }}>
+                  GitHub: github.com/becca-afk • KCA University IT Student (GPA: 3.42)
                 </div>
               </div>
 
-              {/* Objective */}
+              {/* Professional Summary */}
               <div style={{ marginBottom: '1.25rem' }}>
                 <h3 style={{ fontSize: '1.05rem', color: '#1e3a8a', borderBottom: '1px solid #cbd5e1', paddingBottom: '3px', marginBottom: '6px', textTransform: 'uppercase' }}>
-                  Career Objective
+                  Professional Summary
                 </h3>
                 <p style={{ fontSize: '0.92rem', margin: 0, textAlign: 'justify' }}>
-                  A proactive, dedicated Information Technology professional completing a Diploma in IT at KCA University, seeking full-time or flexible employment opportunities in IT Support, Network Operations, or Software Development. Dedicated to applying verified technical proficiencies in Network Design (Grade A), Web Systems (Grade A), Java Programming (Grade A-), SQL Database Modeling (Grade A-), and Systems Analysis (Grade A-) alongside practical experience in PC assembly/diagnostics, structured cabling, and Linux administration.
+                  Highly adaptable IT student at KCA University (GPA: 3.42) with a strong foundation in hardware maintenance, network configuration, and software development. Trained to assemble/disassemble PCs, format operating systems (Windows/Linux), and troubleshoot technical issues. Proven ability to bridge technical and business environments, having independently built and deployed a live e-commerce website. Fluent in English and Swahili, with a proven track record of teamwork as a national competition runner-up.
                 </p>
+              </div>
+
+              {/* Technical Skills */}
+              <div style={{ marginBottom: '1.25rem' }}>
+                <h3 style={{ fontSize: '1.05rem', color: '#1e3a8a', borderBottom: '1px solid #cbd5e1', paddingBottom: '3px', marginBottom: '6px', textTransform: 'uppercase' }}>
+                  Technical Skills
+                </h3>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '6px 12px', fontSize: '0.86rem' }}>
+                  <div>• <strong>IT Support & Hardware:</strong> PC assembly/disassembly, hardware troubleshooting, OS installation/formatting (Windows, Ubuntu), remote support</div>
+                  <div>• <strong>Programming Languages:</strong> Java (OOP), C (Pointers/Memory Management), HTML, CSS</div>
+                  <div>• <strong>Operating Systems & Networking:</strong> Linux (Ubuntu CLI), Windows Admin, Network Design & Setup, Structured Cabling, TCP/IP basics</div>
+                  <div>• <strong>Data, Design & Tools:</strong> SQL, Relational DB Design, DTP, Electronic Business Systems, Financial Management, MS Office, Google Workspace, Git, GitHub, Vercel, VirtualBox</div>
+                </div>
+              </div>
+
+              {/* Projects */}
+              <div style={{ marginBottom: '1.25rem' }}>
+                <h3 style={{ fontSize: '1.05rem', color: '#1e3a8a', borderBottom: '1px solid #cbd5e1', paddingBottom: '3px', marginBottom: '6px', textTransform: 'uppercase' }}>
+                  Projects
+                </h3>
+                <div style={{ fontSize: '0.86rem', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <div>
+                    <strong>First Class Perfume (Live E-Commerce Website)</strong> — <em>first-class-perfume.vercel.app</em>
+                    <div>Consulted with a business owner to solve a payment bottleneck; built and deployed a responsive HTML/CSS site on Vercel with WhatsApp ordering for direct chats and M-Pesa payments.</div>
+                  </div>
+                  <div>
+                    <strong>Car Showcase Website</strong> — <em>becca-afk.github.io/car-website</em>
+                    <div>Designed and deployed responsive web layouts to practice front-end development.</div>
+                  </div>
+                </div>
               </div>
 
               {/* Education */}
               <div style={{ marginBottom: '1.25rem' }}>
                 <h3 style={{ fontSize: '1.05rem', color: '#1e3a8a', borderBottom: '1px solid #cbd5e1', paddingBottom: '3px', marginBottom: '6px', textTransform: 'uppercase' }}>
-                  Education Background
+                  Education
                 </h3>
                 <div style={{ marginBottom: '0.5rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 700, fontSize: '0.94rem' }}>
-                    <span>Diploma in Information Technology</span>
-                    <span>2025 – 2027 (Expected)</span>
+                    <span>Diploma in Information Technology | KCA University</span>
+                    <span>Expected 2027</span>
                   </div>
-                  <div style={{ color: '#1e3a8a', fontWeight: 600, fontSize: '0.88rem' }}>KCA University, Nairobi, Kenya • Cumulative GPA: {personalInfo.gpa}</div>
-                  <div style={{ fontSize: '0.86rem', marginTop: '2px' }}>
-                    <strong>Verified Coursework Grades:</strong> Web Development (Grade A), HCI (Grade A), Network Design (Grade A), Computer Architecture (Grade A), Java Programming (Grade A-), Database Systems (Grade A-), Systems Analysis (Grade A-), Structured Cabling (Grade B+), C Language (Grade B+).
+                  <div style={{ color: '#1e3a8a', fontWeight: 600, fontSize: '0.88rem' }}>Cumulative GPA: {personalInfo.gpa}</div>
+                  <div style={{ fontSize: '0.85rem', marginTop: '2px' }}>
+                    <strong>Key Grades:</strong> Computer Organization (A), Network Design (A), Human-Computer Interaction (A), Web Design (A), Java Programming (A-), Database Systems (A-).
+                  </div>
+                  <div style={{ fontSize: '0.84rem', marginTop: '2px', color: '#475569' }}>
+                    <strong>Relevant Coursework:</strong> Principles of Computer Support & Maintenance, Operating Systems, Systems Analysis & Design, Electronic Business Systems, Financial Management, Desktop Publishing (DTP).
                   </div>
                 </div>
 
                 <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 700, fontSize: '0.92rem' }}>
-                    <span>Kenya Certificate of Secondary Education (KCSE)</span>
-                    <span>2020 – 2024</span>
+                  <div style={{ fontWeight: 700, fontSize: '0.92rem' }}>
+                    Kenya Certificate of Secondary Education (KCSE)
                   </div>
-                  <div style={{ color: '#1e3a8a', fontSize: '0.86rem' }}>The Aga Khan High School, Nairobi (Mean Grade: C)</div>
+                  <div style={{ color: '#334155', fontSize: '0.86rem' }}>• Riara High School (2019 – 2022)</div>
+                  <div style={{ color: '#334155', fontSize: '0.86rem' }}>• Aga Khan High School (2023 – 2024)</div>
                 </div>
               </div>
 
-              {/* Technical Competencies */}
-              <div style={{ marginBottom: '1.25rem' }}>
-                <h3 style={{ fontSize: '1.05rem', color: '#1e3a8a', borderBottom: '1px solid #cbd5e1', paddingBottom: '3px', marginBottom: '6px', textTransform: 'uppercase' }}>
-                  Key Technical Competencies
-                </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '6px 12px', fontSize: '0.88rem' }}>
-                  <div>• <strong>Hardware Support:</strong> PC assembly, disassembly, diagnostics (RAM, SSD, PSU)</div>
-                  <div>• <strong>Networking:</strong> Network design (A), structured cabling (B+), RJ45 crimping</div>
-                  <div>• <strong>Software & DB:</strong> Java (OOP, A-), C (B+), SQL & relational schema (A-)</div>
-                  <div>• <strong>Systems:</strong> Linux CLI (Ubuntu), Windows admin, user technical support</div>
-                </div>
-              </div>
-
-              {/* Referees */}
+              {/* Achievements & References */}
               <div>
                 <h3 style={{ fontSize: '1.05rem', color: '#1e3a8a', borderBottom: '1px solid #cbd5e1', paddingBottom: '3px', marginBottom: '6px', textTransform: 'uppercase' }}>
-                  Referees
+                  Achievements & References
                 </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '8px', fontSize: '0.82rem' }}>
-                  {defaultReferees.map((ref, i) => (
-                    <div key={i} style={{ background: '#f8fafc', padding: '6px 8px', borderRadius: '4px', border: '1px solid #e2e8f0' }}>
-                      <strong style={{ display: 'block', color: '#0f172a' }}>{ref.name}</strong>
-                      <span>{ref.title}</span><br />
-                      <span>{ref.institution}</span><br />
-                      <span style={{ color: '#2563eb' }}>{ref.email}</span>
-                    </div>
-                  ))}
+                <div style={{ fontSize: '0.86rem', color: '#334155', marginBottom: '6px' }}>
+                  • <strong>Junior Achievers Kenya:</strong> 2nd Place Nationally (Mombasa). Demonstrated teamwork, business acumen, and presentation skills under pressure.<br />
+                  • <strong>Languages:</strong> Native Swahili, Fluent English.
+                </div>
+                <div style={{ fontSize: '0.85rem', color: '#475569' }}>
+                  <strong>References:</strong> Available upon request (KCA University faculty & referee details also accessible in Career Suite).
                 </div>
               </div>
             </div>
