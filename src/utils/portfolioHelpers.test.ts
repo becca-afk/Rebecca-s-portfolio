@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getDocumentDownloadFilename, normalizeRelativeAssetUrl } from './portfolioHelpers';
+import {
+  getCareerSuitePdfTarget,
+  getDocumentDownloadFilename,
+  normalizeRelativeAssetUrl,
+} from './portfolioHelpers';
 
 test('getDocumentDownloadFilename prefers explicit downloadName', () => {
   const name = getDocumentDownloadFilename({
@@ -39,3 +43,19 @@ test('normalizeRelativeAssetUrl converts leading slashes to relative paths for G
     'https://example.com/doc.pdf'
   );
 });
+
+test('getCareerSuitePdfTarget resolves Resume.pdf and Cover_Letter.pdf correctly', () => {
+  assert.deepEqual(getCareerSuitePdfTarget('cv'), {
+    fileUrl: './Resume.pdf',
+    downloadName: 'Rebecca_Nabusambya_Manyasi_Resume.pdf',
+  });
+  assert.deepEqual(getCareerSuitePdfTarget('letter'), {
+    fileUrl: './Cover_Letter.pdf',
+    downloadName: 'Rebecca_Nabusambya_Manyasi_Cover_Letter.pdf',
+  });
+  assert.deepEqual(getCareerSuitePdfTarget('checklist'), {
+    fileUrl: './Resume.pdf',
+    downloadName: 'Rebecca_Nabusambya_Manyasi_Resume.pdf',
+  });
+});
+

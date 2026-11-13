@@ -1,12 +1,32 @@
 import React, { useState } from 'react';
-import { FileText, Award, Mail, Download, Eye, Briefcase, Printer } from 'lucide-react';
+import { FileText, Award, Mail, Download, Eye, Briefcase, Printer, Check } from 'lucide-react';
 import { documentsList } from '../data/portfolioData';
 import { DocumentItem } from '../types';
 import { DocumentModal } from './DocumentModal';
-import { getDocumentDownloadFilename, normalizeRelativeAssetUrl } from '../utils/portfolioHelpers';
+import {
+  getDocumentDownloadFilename,
+  normalizeRelativeAssetUrl,
+  triggerPdfDownload,
+} from '../utils/portfolioHelpers';
 
 export const Documents: React.FC = () => {
   const [selectedDoc, setSelectedDoc] = useState<DocumentItem | null>(null);
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const [downloadedId, setDownloadedId] = useState<string | null>(null);
+
+  const handleDownloadClick = async (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    doc: DocumentItem,
+    safeUrl: string,
+    downloadFilename: string
+  ) => {
+    e.preventDefault();
+    setDownloadingId(doc.id);
+    await triggerPdfDownload(safeUrl, downloadFilename);
+    setDownloadingId(null);
+    setDownloadedId(doc.id);
+    setTimeout(() => setDownloadedId((prev) => (prev === doc.id ? null : prev)), 2500);
+  };
 
   const getDocIcon = (type: DocumentItem['iconType']) => {
     switch (type) {
@@ -104,6 +124,7 @@ export const Documents: React.FC = () => {
                 <a
                   href={safeUrl}
                   download={downloadFilename}
+                  onClick={(e) => handleDownloadClick(e, doc, safeUrl, downloadFilename)}
                   className="btn btn-primary"
                   style={{
                     flex: 1,
@@ -112,8 +133,12 @@ export const Documents: React.FC = () => {
                     justifyContent: 'center'
                   }}
                 >
-                  <Download size={14} />
-                  Download PDF
+                  {downloadedId === doc.id ? <Check size={14} /> : <Download size={14} />}
+                  {downloadingId === doc.id
+                    ? 'Downloading...'
+                    : downloadedId === doc.id
+                    ? 'Downloaded!'
+                    : 'Download PDF'}
                 </a>
               </div>
             </div>

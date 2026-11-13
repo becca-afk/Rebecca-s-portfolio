@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { X, Download, Printer, Copy, Check, FileText, Briefcase } from 'lucide-react';
 import { DocumentItem } from '../types';
 import { personalInfo } from '../data/portfolioData';
-import { getDocumentDownloadFilename, normalizeRelativeAssetUrl } from '../utils/portfolioHelpers';
+import {
+  getDocumentDownloadFilename,
+  normalizeRelativeAssetUrl,
+  triggerPdfDownload,
+} from '../utils/portfolioHelpers';
 
 interface DocumentModalProps {
   document: DocumentItem | null;
@@ -11,11 +15,13 @@ interface DocumentModalProps {
 
 export const DocumentModal: React.FC<DocumentModalProps> = ({ document, onClose }) => {
   const [copied, setCopied] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
   const [viewMode, setViewMode] = useState<'formatted' | 'pdf'>('formatted');
 
   useEffect(() => {
     setViewMode('formatted');
     setCopied(false);
+    setDownloaded(false);
   }, [document?.id]);
 
   if (!document) return null;
@@ -390,11 +396,17 @@ Available upon request.`;
             <a
               href={normalizeRelativeAssetUrl(document.fileUrl)}
               download={getDocumentDownloadFilename(document)}
+              onClick={async (e) => {
+                e.preventDefault();
+                await triggerPdfDownload(document.fileUrl, getDocumentDownloadFilename(document));
+                setDownloaded(true);
+                setTimeout(() => setDownloaded(false), 2500);
+              }}
               className="btn btn-primary"
               style={{ padding: '0.45rem 1rem', fontSize: '0.85rem' }}
             >
-              <Download size={14} />
-              Download PDF
+              {downloaded ? <Check size={14} /> : <Download size={14} />}
+              {downloaded ? 'Downloaded!' : 'Download PDF'}
             </a>
             <button
               onClick={handlePrint}

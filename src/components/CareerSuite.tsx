@@ -22,12 +22,14 @@ import {
   defaultReferees, 
   careerDossierChecklist 
 } from '../data/portfolioData';
+import { getCareerSuitePdfTarget, triggerPdfDownload } from '../utils/portfolioHelpers';
 
 type TargetPreset = 'cellulant' | 'blue-oak' | 'enterprise' | 'custom';
 
 export const CareerSuite: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'cv' | 'letter' | 'checklist'>('cv');
   const [copied, setCopied] = useState<string | null>(null);
+  const [pdfDownloaded, setPdfDownloaded] = useState(false);
 
   // Customization State for Cover Letter
   const [targetPreset, setTargetPreset] = useState<TargetPreset>('cellulant');
@@ -264,12 +266,23 @@ ${phone} | ${email}`;
 
   const handleDownloadTxt = (filename: string, content: string) => {
     const element = document.createElement('a');
-    const file = new Blob([content], { type: 'text/plain' });
-    element.href = URL.createObjectURL(file);
+    const file = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const blobUrl = URL.createObjectURL(file);
+    element.href = blobUrl;
     element.download = filename;
+    element.style.display = 'none';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 2500);
+  };
+
+  const handleDownloadPdf = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = getCareerSuitePdfTarget(activeTab);
+    await triggerPdfDownload(target.fileUrl, target.downloadName);
+    setPdfDownloaded(true);
+    setTimeout(() => setPdfDownloaded(false), 2500);
   };
 
   return (
@@ -429,14 +442,25 @@ ${phone} | ${email}`;
               {copied === activeTab ? 'Copied Full Text!' : 'Copy Formatted Text'}
             </button>
 
-            <button
-              type="button"
-              onClick={handlePrint}
+            <a
+              href={getCareerSuitePdfTarget(activeTab).fileUrl}
+              download={getCareerSuitePdfTarget(activeTab).downloadName}
+              onClick={handleDownloadPdf}
               className="btn btn-primary"
               style={{ padding: '0.45rem 1.1rem', fontSize: '0.85rem' }}
             >
+              {pdfDownloaded ? <Check size={15} /> : <Download size={15} />}
+              {pdfDownloaded ? 'Downloaded!' : activeTab === 'letter' ? 'Download Cover Letter PDF' : 'Download Resume PDF'}
+            </a>
+
+            <button
+              type="button"
+              onClick={handlePrint}
+              className="btn btn-outline"
+              style={{ padding: '0.45rem 1rem', fontSize: '0.85rem' }}
+            >
               <Printer size={15} />
-              Print / Save as PDF
+              Print Paper
             </button>
 
             <button
